@@ -1,0 +1,9 @@
+.mainLayout {
+  display: flex;
+  flex-direction: column;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin-inline: auto;
+  padding: 0 20px;
+  backdrop-filter: blur(5px);
+}
