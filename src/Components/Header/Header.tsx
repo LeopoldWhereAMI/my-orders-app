@@ -16,7 +16,7 @@ export const Header = ({ setActive }: HeaderProps) => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-testid="header">
       <div className={styles.imageWrapper}>
         <img
           onClick={handleClick}
@@ -24,6 +24,7 @@ export const Header = ({ setActive }: HeaderProps) => {
           src={headerImg}
           alt="header-img"
           title="Кликни, что бы увидеть кол-во заказов"
+          data-testid="header-image"
         />
         {showText && (
           <div className={styles.showText}>
@@ -38,6 +39,7 @@ export const Header = ({ setActive }: HeaderProps) => {
         <button
           className={styles.addOrderBtn}
           onClick={() => setActive("addOrder")}
+          data-testid="add-order-button"
         >
           Добавить заказ
         </button>

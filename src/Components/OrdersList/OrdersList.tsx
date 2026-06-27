@@ -18,6 +18,9 @@ export const OrdersList = () => {
 
   return (
     <div className={styles.orderListWrapper}>
+      <label htmlFor="search-input" className="visually-hidden">
+        Поиск заказа...{" "}
+      </label>
       <SearchInput
         className={styles.searchInput}
         placeholder="Поиск заказа..."
@@ -25,7 +28,7 @@ export const OrdersList = () => {
         handleInput={handleInput}
       />
 
-      <div className={styles.ordersList}>
+      <div className={styles.ordersList} data-testid="order-list">
         {listoShoow.length > 0 &&
           listoShoow.map((order) => (
             <div key={order.id}>

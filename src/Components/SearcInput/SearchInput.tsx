@@ -16,6 +16,7 @@ export const SearchInput = ({
   return (
     <input
       type="text"
+      id="search-input"
       className={className}
       placeholder={placeholder}
       value={inputValue}

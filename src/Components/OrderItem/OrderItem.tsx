@@ -10,13 +10,17 @@ export const OrderItem = ({ order }: OrderItemProps) => {
   const { deleteOrder } = useContext(OrderContext);
 
   return (
-    <div className={styles.orderItem}>
+    <div className={styles.orderItem} data-testid="order-item">
       <div className={styles.header}>
         <p>
           <strong>№ заказа:</strong>
           <span>{order.orderCount}</span>
         </p>
-        <button onClick={() => deleteOrder(order.id)} title="Удалить">
+        <button
+          onClick={() => deleteOrder(order.id)}
+          title="Удалить"
+          aria-label="Удалить заказ"
+        >
           ×
         </button>
       </div>
