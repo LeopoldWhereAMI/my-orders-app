@@ -28,7 +28,8 @@ export const Header = ({ setActive }: HeaderProps) => {
         />
         {showText && (
           <div className={styles.showText}>
-            У тебя <span>{orders.length} </span> срочных заказов
+            У тебя <span data-testid="orders-count">{orders.length} </span>{" "}
+            срочных заказов
           </div>
         )}
       </div>

@@ -10,7 +10,13 @@ export const AddOrderForm = () => {
   const { addOrder } = useContext(OrderContext);
 
   return (
-    <form className={styles.addOrderForm} onSubmit={(e) => e.preventDefault()}>
+    <form
+      className={styles.addOrderForm}
+      onSubmit={(e) => {
+        e.preventDefault();
+        addOrder();
+      }}
+    >
       <h3>Добавьте заказ</h3>
       <label htmlFor="order-number" className="visually-hidden">
         № заказа
@@ -32,7 +38,7 @@ export const AddOrderForm = () => {
         placeholder="Тип инструмента"
         id="order-type"
       />
-      <button onClick={addOrder}>Сохранить</button>
+      <button type="submit">Сохранить</button>
     </form>
   );
 };
