@@ -37,8 +37,13 @@ test.describe("Тесты главной страницы", () => {
     await page.waitForLoadState("domcontentloaded");
     console.log("5. DOM loaded");
 
-    await page.evaluate(() => localStorage.clear());
-    console.log("6. localStorage cleared");
+    await page.evaluate(() => {
+      try {
+        localStorage.clear();
+      } catch (e) {
+        console.log("localStorage clear skipped:", e);
+      }
+    });
 
     await page.waitForTimeout(500);
     console.log("7. WAIT DONE");
