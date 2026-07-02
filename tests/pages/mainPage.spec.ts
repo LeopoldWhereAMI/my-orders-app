@@ -34,11 +34,11 @@ test.describe("Тесты главной страницы", () => {
     mainPage = new MainPage(page);
     console.log("4. MainPage created");
 
-    await page.evaluate(() => localStorage.clear());
-    console.log("5. localStorage cleared");
-
     await page.waitForLoadState("domcontentloaded");
-    console.log("6. DOM loaded");
+    console.log("5. DOM loaded");
+
+    await page.evaluate(() => localStorage.clear());
+    console.log("6. localStorage cleared");
 
     await page.waitForTimeout(500);
     console.log("7. WAIT DONE");
