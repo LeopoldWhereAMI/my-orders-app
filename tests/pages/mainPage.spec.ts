@@ -23,6 +23,7 @@ test.describe("Тесты главной страницы", () => {
       env: {
         ...process.env,
         E2E_TEST: "true",
+        DISPLAY: process.env.DISPLAY ?? ":99",
       },
     });
     console.log("2. Electron launched");
