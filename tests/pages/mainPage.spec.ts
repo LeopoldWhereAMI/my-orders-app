@@ -28,8 +28,23 @@ test.describe("Тесты главной страницы", () => {
     });
     console.log("2. Electron launched");
 
-    page = await app.firstWindow();
+    app
+      .process()
+      .stdout?.on("data", (d) => console.log("[main stdout]", d.toString()));
+    app
+      .process()
+      .stderr?.on("data", (d) => console.log("[main stderr]", d.toString()));
+
+    page = await app.firstWindow(); // ← оставили только один вызов
     console.log("3. Got firstWindow");
+
+    // Логи страницы (renderer process)
+    page.on("console", (msg) =>
+      console.log(`[renderer:${msg.type()}]`, msg.text()),
+    );
+    page.on("pageerror", (err) => console.log("[pageerror]", err));
+    page.on("crash", () => console.log("[PAGE CRASHED]"));
+    app.on("close", () => console.log("[ELECTRON APP CLOSED]"));
 
     mainPage = new MainPage(page);
     console.log("4. MainPage created");
@@ -44,9 +59,13 @@ test.describe("Тесты главной страницы", () => {
         console.log("localStorage clear skipped:", e);
       }
     });
+    console.log("6. localStorage cleared");
 
-    await page.waitForTimeout(500);
-    console.log("7. WAIT DONE");
+    // Ждём реальной готовности приложения, а не фиксированную паузу
+    await page.waitForSelector('[data-testid="header-image"]', {
+      timeout: 15000,
+    });
+    console.log("7. App is ready (header-image visible)");
   });
 
   test.afterEach(async () => {
