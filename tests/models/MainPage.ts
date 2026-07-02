@@ -1,4 +1,4 @@
-import test, { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { ElementConfig, elements } from "../config/elements.config";
 import { createOrder } from "../helpers/orders.helper";
 

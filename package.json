@@ -10,13 +10,15 @@
   "scripts": {
     "dev": "concurrently -k \"cross-env BROWSER=none yarn vite\" \"wait-on http://localhost:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",
     "clean": "rimraf dist release",
-    "build": "yarn clean && vite build",
+    "build": "npm run clean && npm run check && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "electron:build": "yarn build && electron-builder",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "check": "npm run lint && npm run typecheck && npm run test:run",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^19.1.1",

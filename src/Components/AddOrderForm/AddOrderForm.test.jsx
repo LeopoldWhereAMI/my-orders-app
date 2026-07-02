@@ -36,7 +36,7 @@ test("user fills form and submits order", async () => {
   await user.type(screen.getByLabelText("№ заказа"), "1");
   await user.type(screen.getByLabelText("Тип инструмента"), "test");
 
-  await user.click(screen.getByRole("button", { name: /добавить/i }));
+  await user.click(screen.getByRole("button", { name: /Сохранить/i }));
 
   expect(addOrder).toHaveBeenCalledTimes(1);
 });
