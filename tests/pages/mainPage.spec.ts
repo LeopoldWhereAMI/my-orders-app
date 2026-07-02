@@ -26,18 +26,16 @@ test.describe("Тесты главной страницы", () => {
 
     mainPage = new MainPage(page);
 
-    // 🔥 чистим данные
     await page.evaluate(() => localStorage.clear());
 
-    // 🔄 перезагрузка
-    await page.reload();
     await page.waitForLoadState("domcontentloaded");
-
-    await page.screenshot({ path: "debug-start.png", fullPage: true });
+    await page.waitForTimeout(500);
   });
 
   test.afterEach(async () => {
-    await app.close();
+    if (app) {
+      await app.close();
+    }
   });
 
   test("Проверка отображения элементов главной страницы", async () => {
@@ -49,7 +47,6 @@ test.describe("Тесты главной страницы", () => {
   });
 
   test("проверка добавления заказа", async () => {
-    await page.reload();
     await createOrder(page);
     await checkOrderExists(page, "1", "бензобур");
   });
@@ -61,13 +58,11 @@ test.describe("Тесты главной страницы", () => {
   });
 
   test("Удаление заказа", async () => {
-    await page.reload();
     await createOrder(page);
     await mainPage.checkOrdersDelete();
   });
 
   test("проверка счётчика заказов", async () => {
-    await page.reload();
     await mainPage.checkOrdersCount();
   });
 });
