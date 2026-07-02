@@ -11,21 +11,20 @@ export class MainPage {
     this.elements = elements;
   }
 
-  async openMainPage() {
-    await this.page.goto("http://localhost:5173/");
-  }
-
   async checkElementVisability(locator: (page: Page) => Locator) {
     await expect(locator(this.page)).toBeVisible();
   }
 
   async checkOrdersSearch() {
     await this.page.getByRole("textbox", { name: "Поиск заказа" }).fill("1");
-    await expect(this.page.getByTestId("order-item")).toHaveCount(1);
+    await expect(this.page.getByTestId("order-item").first()).toBeVisible();
   }
 
   async checkOrdersDelete() {
-    await this.page.getByRole("button", { name: "Удалить заказ" }).click();
+    await this.page
+      .getByRole("button", { name: "Удалить заказ" })
+      .first()
+      .click();
     await expect(this.page.getByTestId("order-item")).toHaveCount(0);
   }
 

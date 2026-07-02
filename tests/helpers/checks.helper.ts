@@ -5,7 +5,7 @@ export async function checkOrderExists(
   number: string,
   tool: string,
 ) {
-  const orderItem = page.getByTestId("order-item");
+  const orderItem = page.getByTestId("order-item").first();
   await expect(orderItem).toBeVisible();
   await expect(orderItem).toContainText(number);
   await expect(orderItem).toContainText(tool);
