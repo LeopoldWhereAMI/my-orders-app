@@ -21,8 +21,8 @@ test.describe("Тесты главной страницы", () => {
     app = await electron.launch({
       args: [".", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
       env: {
+        ...process.env,
         E2E_TEST: "true",
-        DISPLAY: ":99",
       },
     });
     console.log("2. Electron launched");
