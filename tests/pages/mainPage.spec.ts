@@ -19,6 +19,7 @@ test.describe("Тесты главной страницы", () => {
       args: ["."],
       env: {
         E2E_TEST: "true",
+        DISPLAY: ":99",
       },
     });
 
