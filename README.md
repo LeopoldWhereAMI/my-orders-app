@@ -1,87 +1,84 @@
-# React + TypeScript + Vite
+# Urgent Orders — Desktop Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A desktop application for managing urgent orders. Built with React and TypeScript, wrapped in Electron.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application helps organize and manage urgent orders through a desktop interface. It was developed as a personal project to practice React, TypeScript, application architecture, testing, and desktop development with Electron.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Create and manage orders
+- View and organize orders in a list
+- Search for orders
+- Manage order data through a React interface
+- Persist data locally using `localStorage`
+- Desktop application built with Electron
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **React**
+- **TypeScript**
+- **Vite**
+- **Electron**
+- **Context API**
+- **CSS Modules**
+- **Vitest**
+- **React Testing Library**
+- **Playwright**
+- **ESLint**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## Testing
+
+The project includes several levels of testing:
+
+- Unit tests
+- React component tests
+- Integration tests
+- End-to-end tests with Playwright
+
+## Development
+
+Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Run the application in development mode:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-rimraf
-
-{
-  "scripts": {
-    "clean": "rimraf dist release",
-    "build": "yarn clean && vite build",
-    // остальные скрипты...
-  },
-  "devDependencies": {
-    "rimraf": "^5.0.5"
-    // остальные devDependencies...
-  }
-}
-
-yarn clean
-yarn build
-yarn electron:build
+```bash
+npm run dev
 ```
+
+Run unit and component tests:
+
+```bash
+npm run test
+```
+
+Run checks:
+
+```bash
+npm run check
+```
+
+Run end-to-end tests:
+
+```bash
+npm run test:e2e
+```
+
+Build the application:
+
+```bash
+npm run build
+```
+
+## CI
+
+GitHub Actions is configured to run the build and Playwright end-to-end tests on pushes and pull requests.
+
+## Project
+
+Developed as a personal project for learning and practicing frontend and desktop application development.

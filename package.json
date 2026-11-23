@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "author": {
-    "name": "Karabin"
+    "name": "KDA"
   },
   "type": "commonjs",
   "main": "electron/main.js",
