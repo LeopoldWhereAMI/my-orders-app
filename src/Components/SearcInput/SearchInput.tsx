@@ -1,4 +1,4 @@
-import type { ChangeEvent } from "react";
+import { memo, type ChangeEvent } from "react";
 
 type SearchInputProps = {
   className: string;
@@ -7,12 +7,14 @@ type SearchInputProps = {
   handleInput: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const SearchInput = ({
+const SearchInput = ({
   className,
   placeholder,
   inputValue,
   handleInput,
 }: SearchInputProps) => {
+  console.log("SearchInput");
+
   return (
     <input
       type="text"
@@ -24,3 +26,5 @@ export const SearchInput = ({
     />
   );
 };
+
+export default memo(SearchInput);

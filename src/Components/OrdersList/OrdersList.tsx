@@ -1,20 +1,22 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { OrderItem } from "../OrderItem/OrderItem";
 import { OrderContext } from "../../Context/OrderContext";
-import { SearchInput } from "../SearcInput/SearchInput";
+import SearchInput from "../SearcInput/SearchInput";
 import styles from "./OrdersList.module.css";
 
 export const OrdersList = () => {
   const { orders } = useContext(OrderContext);
   const [inputValue, setInputValue] = useState("");
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-  };
+  }, []);
 
   const listoShoow = inputValue
     ? orders.filter((order) => String(order.orderCount).includes(inputValue))
     : orders;
+
+  console.log("OrdersList");
 
   return (
     <div className={styles.orderListWrapper}>
