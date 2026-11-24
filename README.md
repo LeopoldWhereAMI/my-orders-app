@@ -6,6 +6,17 @@ A desktop application for managing urgent orders. Built with React and TypeScrip
 
 The application helps organize and manage urgent orders through a desktop interface. It was developed as a personal project to practice React, TypeScript, application architecture, testing, and desktop development with Electron.
 
+## Screenshots
+
+### Main Screen
+![Main Screen](screenshots/main-screen.png)
+
+### Add Order
+![Add Order](screenshots/add-order.png)
+
+### Orders History
+![Orders History](screenshots/orders-history.png)
+
 ## Features
 
 - Create and manage orders
